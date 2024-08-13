@@ -37,3 +37,9 @@ next-env.d.ts
 
 # firebase configuration
 firebase.js
+
+# auth middleware
+middleware.ts
+
+# get stripe
+get-stripe.js
