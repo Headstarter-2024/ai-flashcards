@@ -52,7 +52,7 @@ export default function Generate() {
   };
 
   const handleClose = () => {
-    setOpen(flase);
+    setOpen(false);
   };
 
   const saveFlashcards = async () => {
