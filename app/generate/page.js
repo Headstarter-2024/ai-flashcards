@@ -1,6 +1,7 @@
 "use client";
 
 import { useUser } from "@clerk/nextjs";
+import { db } from "@/firebase";
 import {
   Box,
   Button,
@@ -18,9 +19,15 @@ import {
   DialogContentText,
   DialogActions,
 } from "@mui/material";
-import { getDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import {
+  doc,
+  collection,
+  setDoc,
+  getDoc,
+  writeBatch,
+} from "firebase/firestore";
 
 export default function Generate() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -62,8 +69,8 @@ export default function Generate() {
     }
 
     const batch = writeBatch(db);
-    const useDocRef = doc(collection(db, "users"), user.id);
-    const docSnap = await getDoc(useDocRef);
+    const userDocRef = doc(collection(db, "users"), user.id);
+    const docSnap = await getDoc(userDocRef);
 
     if (docSnap.exists()) {
       const collections = docSnap.data().flashcards || [];
@@ -75,7 +82,7 @@ export default function Generate() {
         batch.set(userDocRef, { flashcards: collections }, { merge: true });
       }
     } else {
-      batch.set(userrDocRef, { flashcards: [{ name }] });
+      batch.set(userDocRef, { flashcards: [{ name }] });
     }
 
     const colRef = collection(userDocRef, name);
