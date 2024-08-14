@@ -36,7 +36,7 @@ export default function Generate() {
   const [text, setTexted] = useState("");
   const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
-  const router = useRouter;
+  const router = useRouter();
 
   const handleSubmit = async () => {
     fetch("api/generate", {
