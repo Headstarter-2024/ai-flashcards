@@ -75,7 +75,7 @@ export default function Home() {
         <Typography variant="h5" gutterBottom>
           The easiest way to create flashcards based on your notes!
         </Typography>
-        <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+        <Button variant="contained" color="primary" sx={{ mt: 2 }} href="/generate">
           Get Started
         </Button>
       </Box>
@@ -133,12 +133,12 @@ export default function Home() {
                 Basic
               </Typography>
               <Typography variant="h6" gutterBottom>
-                $5/month
+                $0/month
               </Typography>
               <Typography variant="h6">
                 Access to basic flashcard features and limited storage!
               </Typography>
-              <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+              <Button variant="contained" color="primary" sx={{ mt: 2 }} href="/generate">
                 Choose Basic
               </Button>
             </Box>
@@ -156,7 +156,7 @@ export default function Home() {
                 Pro
               </Typography>
               <Typography variant="h6" gutterBottom>
-                $10/month
+                $5/month
               </Typography>
               <Typography variant="h6">
                 Unlimited flashcard features and storage, with priority support
