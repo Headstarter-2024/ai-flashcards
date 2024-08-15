@@ -218,7 +218,7 @@ export default function Home() {
                 <Typography component="p">✔ Access to all quiz decks</Typography>
                 <Typography component="p">✔ Personalized study plans</Typography>
                 <Typography component="p">✔ Basic analytics and progress tracking</Typography>
-                <Button variant="contained" sx={{ mt: 3, backgroundColor: '#ff4437', color: '#ffffff' }} href="/sign-up">
+                <Button variant="contained" sx={{ mt: 3, backgroundColor: '#ff4437', color: '#ffffff' }} href="/sign-in">
                   Get Started
                 </Button>
               </Paper>

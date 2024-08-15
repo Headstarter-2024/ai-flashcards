@@ -12,21 +12,13 @@ import Link from "next/link";
 export default function SignUpPage() {
   return (
     <Container maxWidth={false} disableGutters style={{ width: "100%" }}>
-      <AppBar position="static" sx={{ backgroundColor: "#3f51b5" }}>
+      <AppBar position="static" sx={{ backgroundColor: "transparent", boxShadow: "none" }}>
         <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Flashcard SaaS App
-          </Typography>
-          <Button color="inherit">
-            <Link href="/sign-in" passHref>
-              Login
-            </Link>
-          </Button>
-          <Button color="inherit">
-            <Link href="/sign-up" passHref>
-              Sign Up
-            </Link>
-          </Button>
+          <Link href="/" passHref style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography variant="h6" sx={{ flexGrow: 1, cursor: 'pointer' }}>
+              QuizWhiz
+            </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
       <Box
@@ -36,7 +28,8 @@ export default function SignUpPage() {
         justifyContent="center"
         sx={{ mt: 4 }}
       >
-        <Typography variant="h4">Sign Up</Typography>
+        <Typography variant="h4" sx={{ color: 'white' }}>Sign Up</Typography>
+        <Typography variant="h4" sx={{ mt: 4 }}></Typography>
         <SignUp redirectUrl="/generate" />
       </Box>
     </Container>
