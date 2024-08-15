@@ -1,4 +1,4 @@
-import { SignIn, SignUp } from "@clerk/nextjs";
+import { SignUp } from "@clerk/nextjs";
 import {
   AppBar,
   Button,
@@ -34,9 +34,10 @@ export default function SignUpPage() {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
+        sx={{ mt: 4 }}
       >
         <Typography variant="h4">Sign Up</Typography>
-        <SignUp />
+        <SignUp redirectUrl="/generate" />
       </Box>
     </Container>
   );

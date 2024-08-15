@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 
-export default function SignUpPage() {
+export default function SignInPage() {
   return (
     <Container maxWidth={false} disableGutters style={{ width: "100%" }}>
       <AppBar position="static" sx={{ backgroundColor: "#3f51b5" }}>
@@ -34,9 +34,10 @@ export default function SignUpPage() {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
+        sx={{ mt: 4 }}
       >
         <Typography variant="h4">Sign In</Typography>
-        <SignIn />
+        <SignIn redirectUrl="/generate" />
       </Box>
     </Container>
   );
