@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import React from 'react';
 import getStripe from "@/utils/get-stripe";
 import {
   AppBar,
@@ -13,6 +14,10 @@ import {
 } from "@mui/material";
 import Head from "next/head";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Paper, Avatar } from '@mui/material';
+import LoginIcon from '@mui/icons-material/ArrowForward';
+import SignUpIcon from '@mui/icons-material/PersonAdd';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function Home() {
   const handleSubmit = async () => {
@@ -41,139 +46,203 @@ export default function Home() {
   };
 
   return (
-    <Container maxWidth={false} disableGutters style={{ width: "100%" }}>
-      <Head>
-        <title>Flashcard SaaS App</title>
-        <meta
-          name="description"
-          content="Create flashcards based on your notes!"
-        />
-      </Head>
-
-      <AppBar position="static">
+    <>
+      <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar>
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
-            Flashcard SaaS App
+          <Typography variant="h6" sx={{ flexGrow: 1, color: 'white' }}>
+            QuizWhiz
           </Typography>
-          <SignedOut>
-            <Button color="inherit" href="/sign-in">
-              Login
-            </Button>
-            <Button color="inherit" href="/sign-up">
-              Sign Up
-            </Button>
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          <Button sx={{ color: 'white' }} href="#testimonials">Testimonials</Button>
+          <Button sx={{ color: 'white' }} href="#pricing">Pricing</Button>
         </Toolbar>
       </AppBar>
-      <Box sx={{ textAlign: "center", my: 4 }}>
-        <Typography variant="h2" gutterBottom>
-          Welcome to Flascard Saas
-        </Typography>
-        <Typography variant="h5" gutterBottom>
-          The easiest way to create flashcards based on your notes!
-        </Typography>
-        <Button variant="contained" color="primary" sx={{ mt: 2 }} href="/generate">
-          Get Started
-        </Button>
-      </Box>
-      <Box sx={{ my: 6, textAlign: "center" }}>
-        <Typography variant="h4" gutterBottom>
-          Features
-        </Typography>
-        <Grid container spacing={4}>
-          <Grid item xs={12} and md={4}>
-            <Typography variant="h6" gutterBottom>
-              Effortless Note Entry
-            </Typography>
-            <Typography variant="h6">
-              Easily enter your notes, and let our software transform
-              them—creating flashcards has never been simpler or more intuitive!
-            </Typography>
-          </Grid>
-          <Grid item xs={12} and md={4}>
-            <Typography variant="h6" gutterBottom>
-              Intelligent Flashcard Generation
-            </Typography>
-            <Typography variant="h6">
-              Input your notes, and watch as our ChatGPT-4o powered AI crafts
-              intelligent flashcards—turning study material into personalized
-              learning tools with ease!
-            </Typography>
-          </Grid>
-          <Grid item xs={12} and md={4}>
-            <Typography variant="h6" gutterBottom>
-              Study Anywhere, Anytime
-            </Typography>
-            <Typography variant="h6">
-              Access your notes from anywhere, and let our software seamlessly
-              create flashcards—ensuring your study materials are always at your
-              fingertips!
-            </Typography>
-          </Grid>
-        </Grid>
-      </Box>
-      <Box sx={{ my: 6, textAlign: "center" }}>
-        <Typography variant="h4" gutterBottom>
-          Pricing
-        </Typography>
-        <Grid container spacing={4}>
-          <Grid item xs={12} and md={6}>
-            <Box
+
+      <Container maxWidth="lg" sx={{ textAlign: 'center', py: 5 }}>
+        {/* Hero Section */}
+        <Box sx={{ py: 10 }}>
+          <Typography variant="h3" component="h1" gutterBottom sx={{ color: 'white' }}>
+            Effortless Learning with QuizWhiz
+          </Typography>
+          <Typography variant="h5" component="p" gutterBottom sx={{ color: 'white' }}>
+            Boost your knowledge and ace your exams with our cutting-edge AI-powered quiz app!
+          </Typography>
+          <Box sx={{ mt: 4 }}>
+            <Button
+              variant="contained"
+              sx={{ mr: 2, backgroundColor: '#ff4437', color: '#ffffff' }}
+              startIcon={<LoginIcon />}
+              href="/sign-in"
+            >
+              Login
+            </Button>
+            <Button
+              variant="contained"
+              sx={{ mr: 2, backgroundColor: '#ffc107', color: '#ffffff' }}
+              startIcon={<SignUpIcon />}
+              href="/sign-up"
+            >
+              Sign Up
+            </Button>
+          </Box>
+        </Box>
+
+        {/* Testimonials Section */}
+        <Box
+          id="testimonials"
+          sx={{
+            backgroundImage: 'url("/images/fc.png")', // Replace with the correct path to your image
+            backgroundSize: 'cover',  // Ensures the image covers the entire section
+            backgroundPosition: 'center',  // Centers the image
+            backgroundRepeat: 'no-repeat',  // Prevents the image from repeating
+            py: 10,
+            color: 'white',  // Adjust text color if needed for better visibility
+            position: 'relative', // Ensures the effect is properly positioned
+            overflow: 'hidden', // Prevents overflow issues
+          }}
+        >
+          {/* Semi-transparent Background for Text */}
+          <Box
+            sx={{
+              position: 'relative',
+              backgroundColor: 'rgba(0, 0, 0, 0.6)', // Semi-transparent black background
+              padding: '20px',
+              borderRadius: '10px',
+              maxWidth: '800px',
+              margin: '0 auto',
+            }}
+          >
+            <Typography
+              variant="h4"
+              component="h2"
+              gutterBottom
               sx={{
-                p: 3,
-                border: "1px solid",
-                borderColor: "grey.300",
-                borderRadius: 2,
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
               }}
             >
-              <Typography variant="h5" gutterBottom>
-                Basic
-              </Typography>
-              <Typography variant="h6" gutterBottom>
-                $0/month
-              </Typography>
-              <Typography variant="h6">
-                Access to basic flashcard features and limited storage!
-              </Typography>
-              <Button variant="contained" color="primary" sx={{ mt: 2 }} href="/generate">
-                Choose Basic
-              </Button>
-            </Box>
-          </Grid>
-          <Grid item xs={12} and md={6}>
-            <Box
+              What Our Users Say
+            </Typography>
+            <Typography
+              variant="h6"
+              component="p"
+              gutterBottom
               sx={{
-                p: 3,
-                border: "1px solid",
-                borderColor: "grey.300",
-                borderRadius: 2,
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
               }}
             >
-              <Typography variant="h5" gutterBottom>
-                Pro
-              </Typography>
-              <Typography variant="h6" gutterBottom>
-                $5/month
-              </Typography>
-              <Typography variant="h6">
-                Unlimited flashcard features and storage, with priority support
-                included!
-              </Typography>
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{ mt: 2 }}
-                onClick={handleSubmit}
-              >
-                Choose Pro
-              </Button>
-            </Box>
+              Hear from our satisfied customers and see how QuizWhiz has transformed their learning experience!
+            </Typography>
+          </Box>
+
+          <Grid container spacing={4} justifyContent="center" sx={{ mt: 4 }}>
+            {/* Testimonials */}
+            <Grid item xs={12} sm={6} md={4}>
+              <Paper elevation={3} sx={{ p: 3, backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+                <Avatar
+                  src="/images/mz.jpg" // Replace with the correct path to your image
+                  alt="Mark Zuckerberg"
+                  sx={{ width: 56, height: 56 }}
+                />
+                <Typography variant="h6" component="h3" sx={{ mt: 2, color: 'white' }}>
+                  "QuizWhiz is a game-changer!"
+                </Typography>
+                <Typography component="p" sx={{ mt: 1, color: 'white' }}>
+                  "I've used QuizWhiz for my college courses and it made studying so much more efficient. The adaptive learning algorithms really helped me focus on the areas I needed to improve."
+                </Typography>
+                <Typography variant="subtitle1" component="p" sx={{ mt: 2, color: 'white' }}>
+                  Mark Zuckerberg
+                </Typography>
+                <Typography variant="subtitle2" color="white">
+                  Founder and CEO at Meta
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <Paper elevation={3} sx={{ p: 3, backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+                <Avatar
+                  src="/images/tc.jpg" // Replace with the correct path to your image
+                  alt="Tim Cook"
+                  sx={{ width: 56, height: 56 }}
+                />
+                <Typography variant="h6" component="h3" sx={{ mt: 2, color: 'white' }}>
+                  "Aced my exams with QuizWhiz!"
+                </Typography>
+                <Typography component="p" sx={{ mt: 1, color: 'white' }}>
+                  "As a busy professional, I was struggling to find time to study for my certification exams. QuizWhiz made it easy to learn on-the-go and helped me focus on the areas I needed to improve."
+                </Typography>
+                <Typography variant="subtitle1" component="p" sx={{ mt: 2, color: 'white' }}>
+                  Tim Cook
+                </Typography>
+                <Typography variant="subtitle2" color="white">
+                  CEO of Apple
+                </Typography>
+              </Paper>
+            </Grid>
           </Grid>
-        </Grid>
-      </Box>
-    </Container>
+        </Box>
+
+        {/* Pricing Section */}
+        <Box id="pricing" sx={{ backgroundColor: '#ffc107', py: 10 }}>
+          <Typography variant="h4" component="h2" gutterBottom>
+            Affordable Plans for Every Learner
+          </Typography>
+          <Typography variant="h6" component="p" gutterBottom>
+            Choose the plan that fits your needs and budget, and start your journey to mastering any subject!
+          </Typography>
+          <Grid container spacing={4} justifyContent="center" sx={{ mt: 4 }}>
+            <Grid item xs={12} sm={8} md={5}>
+              <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>
+                <Typography variant="h5" component="h3" sx={{ mb: 1 }}>
+                  Basic
+                </Typography>
+                <Typography variant="h4" component="p" sx={{ mb: 2 }}>
+                  $0/month
+                </Typography>
+                <Typography component="p" sx={{ mb: 2 }}>
+                  Perfect for individual learners.
+                </Typography>
+                <Typography component="p">✔ Access to all quiz decks</Typography>
+                <Typography component="p">✔ Personalized study plans</Typography>
+                <Typography component="p">✔ Basic analytics and progress tracking</Typography>
+                <Button variant="contained" sx={{ mt: 3, backgroundColor: '#ff4437', color: '#ffffff' }} href="/generate">
+                  Get Started
+                </Button>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={8} md={5}>
+              <Paper elevation={3} sx={{ p: 3, backgroundColor: '#003c3e', borderRadius: 2 }}>
+                <Typography variant="h5" component="h3" sx={{ mb: 1, color: '#ffffff' }}>
+                  Pro
+                </Typography>
+                <Typography variant="h4" component="p" sx={{ mb: 2, color: '#ffffff' }}>
+                  $5/month
+                </Typography>
+                <Typography component="p" sx={{ mb: 2, color: '#ffffff' }}>
+                  Unlock advanced features for serious learners.
+                </Typography>
+                <Typography component="p" sx={{ color: '#ffffff' }}>✔ Everything in Basic, plus:</Typography>
+                <Typography component="p" sx={{ color: '#ffffff' }}>✔ Unlimited quiz decks</Typography>
+                <Typography component="p" sx={{ color: '#ffffff' }}>✔ Advanced analytics and progress tracking</Typography>
+                <Button variant="contained" sx={{ mt: 3, backgroundColor: '#ff4437', color: '#ffffff' }} onClick={handleSubmit}>
+                  Get Started
+                </Button>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Box>
+
+        {/* Footer Section */}
+        <Box sx={{ backgroundColor: '#ff4437', py: 5, textAlign: 'center' }}>
+          <Typography variant="body2" sx={{ color: 'white' }}>
+            © 2024 QuizWhiz. All rights reserved.
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            {/* <Button color="inherit" sx={{ mx: 1 }}>Terms of Service</Button>
+            <Button color="inherit" sx={{ mx: 1 }}>Privacy Policy</Button>
+            <Button color="inherit" sx={{ mx: 1 }}>Contact Us</Button>
+            <Button color="inherit" sx={{ mx: 1 }}>Follow us on Twitter</Button> */}
+          </Typography>
+        </Box>
+      </Container>
+    </>
   );
 }
