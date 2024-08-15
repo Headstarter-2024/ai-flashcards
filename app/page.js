@@ -54,6 +54,21 @@ export default function Home() {
           </Typography>
           <Button sx={{ color: 'white' }} href="#testimonials">Testimonials</Button>
           <Button sx={{ color: 'white' }} href="#pricing">Pricing</Button>
+          
+          {/* User Account Icon */}
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          
+          {/* Login and Sign Up buttons when signed out */}
+          <SignedOut>
+            <Button sx={{ color: 'white' }} href="/sign-in" startIcon={<LoginIcon />}>
+              Login
+            </Button>
+            <Button sx={{ color: 'white' }} href="/sign-up" startIcon={<SignUpIcon />}>
+              Sign Up
+            </Button>
+          </SignedOut>
         </Toolbar>
       </AppBar>
 
@@ -203,7 +218,7 @@ export default function Home() {
                 <Typography component="p">✔ Access to all quiz decks</Typography>
                 <Typography component="p">✔ Personalized study plans</Typography>
                 <Typography component="p">✔ Basic analytics and progress tracking</Typography>
-                <Button variant="contained" sx={{ mt: 3, backgroundColor: '#ff4437', color: '#ffffff' }} href="/generate">
+                <Button variant="contained" sx={{ mt: 3, backgroundColor: '#ff4437', color: '#ffffff' }} href="/sign-up">
                   Get Started
                 </Button>
               </Paper>
@@ -234,12 +249,6 @@ export default function Home() {
         <Box sx={{ backgroundColor: '#ff4437', py: 5, textAlign: 'center' }}>
           <Typography variant="body2" sx={{ color: 'white' }}>
             © 2024 QuizWhiz. All rights reserved.
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            {/* <Button color="inherit" sx={{ mx: 1 }}>Terms of Service</Button>
-            <Button color="inherit" sx={{ mx: 1 }}>Privacy Policy</Button>
-            <Button color="inherit" sx={{ mx: 1 }}>Contact Us</Button>
-            <Button color="inherit" sx={{ mx: 1 }}>Follow us on Twitter</Button> */}
           </Typography>
         </Box>
       </Container>
