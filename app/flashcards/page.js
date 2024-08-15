@@ -6,18 +6,23 @@ import { collection, getDoc, setDoc, doc } from "firebase/firestore";
 import { db } from "@/firebase";
 import { useRouter } from "next/navigation";
 import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  Grid,
   Card,
   CardActionArea,
   CardContent,
-  Container,
-  Grid,
-  Typography,
+  Box,
 } from "@mui/material";
+import Link from "next/link";
 
 export default function Flashcards() {
   const { isLoaded, isSignedIn, user } = useUser();
   const [flashcards, setFlashcards] = useState([]);
   const router = useRouter();
+
   useEffect(() => {
     async function getFlashcards() {
       if (!user) return;
@@ -32,41 +37,52 @@ export default function Flashcards() {
       }
     }
     getFlashcards();
-  }),
-    [user];
+  }, [user]);
 
   if (!isLoaded || !isSignedIn) {
     return <></>;
   }
+
   const handleCardClick = (id) => {
     router.push(`/flashcard?id=${id}`);
   };
 
   return (
-    <Container maxWidth="100vw">
-      <Grid
-        container
-        spacing={3}
-        sx={{
-          mt: 4,
-        }}
-      >
-        {flashcards.map((flashcard, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card>
-              <CardActionArea
-                onClick={() => {
-                  handleCardClick(flashcard.name);
-                }}
-              >
-                <CardContent>
-                  <Typography variant="h6">{flashcard.name}</Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <>
+      <AppBar position="static" sx={{ backgroundColor: "transparent", boxShadow: "none" }}>
+        <Toolbar>
+          <Link href="/" passHref style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography variant="h6" sx={{ flexGrow: 1, cursor: 'pointer' }}>
+              QuizWhiz
+            </Typography>
+          </Link>
+        </Toolbar>
+      </AppBar>
+      <Container maxWidth="100vw">
+        <Grid
+          container
+          spacing={3}
+          sx={{
+            mt: 4,
+          }}
+        >
+          {flashcards.map((flashcard, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card>
+                <CardActionArea
+                  onClick={() => {
+                    handleCardClick(flashcard.name);
+                  }}
+                >
+                  <CardContent>
+                    <Typography variant="h6">{flashcard.name}</Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </>
   );
 }
