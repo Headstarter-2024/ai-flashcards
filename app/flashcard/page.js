@@ -1,10 +1,10 @@
 "use client";
 
-import { useUser } from "@clerk/nextjs";
+import { useUser, UserButton } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { collection, getDoc, getDocs, doc } from "firebase/firestore";
 import { db } from "@/firebase";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import {
   AppBar,
   Toolbar,
@@ -15,15 +15,16 @@ import {
   CardContent,
   Container,
   Grid,
+  IconButton,
 } from "@mui/material";
-import Link from "next/link";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function Flashcard() {
   const { isLoaded, isSignedIn, user } = useUser();
   const [flashcards, setFlashcards] = useState([]);
   const [flipped, setFlipped] = useState([]);
-
   const searchParams = useSearchParams();
+  const router = useRouter();
   const search = searchParams.get("id");
 
   useEffect(() => {
@@ -54,13 +55,21 @@ export default function Flashcard() {
 
   return (
     <>
-      <AppBar position="static" sx={{ backgroundColor: "transparent", boxShadow: "none" }}>
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: "transparent", boxShadow: "none" }}
+      >
         <Toolbar>
-          <Link href="/" passHref style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Typography variant="h6" sx={{ flexGrow: 1, cursor: 'pointer' }}>
-              QuizWhiz
-            </Typography>
-          </Link>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="home"
+            onClick={() => router.push("/flashcards")}
+          >
+            <ArrowBackIcon />
+          </IconButton>
+          <Box sx={{ flexGrow: 1 }} />
+          <UserButton />
         </Toolbar>
       </AppBar>
       <Container maxWidth="100vw">

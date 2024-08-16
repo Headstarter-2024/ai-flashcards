@@ -20,7 +20,9 @@ import {
   DialogContentText,
   DialogActions,
   Toolbar,
+  IconButton,
 } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import {
@@ -119,15 +121,25 @@ export default function Generate() {
   return (
     <>
       {/* AppBar Component */}
-      <AppBar position="static" sx={{ backgroundColor: appBarColor, transition: 'background-color 0.3s ease', width: "100%" }} elevation={0}>
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: appBarColor,
+          transition: "background-color 0.3s ease",
+          width: "100%",
+        }}
+        elevation={0}
+      >
         <Toolbar>
-          <Typography
-            variant="h6"
-            sx={{ flexGrow: 1, cursor: "pointer", color: 'white' }}
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="home"
             onClick={() => router.push("/")}
           >
-            QuizWhiz
-          </Typography>
+            <ArrowBackIcon />
+          </IconButton>
+          <Box sx={{ flexGrow: 1 }} />
           <UserButton />
         </Toolbar>
       </AppBar>
@@ -142,7 +154,9 @@ export default function Generate() {
             alignItems: "center",
           }}
         >
-          <Typography variant="h4" sx={{ color: 'white'}}>Let's Create Flashcards!</Typography>
+          <Typography variant="h4" sx={{ color: "white" }}>
+            Let&apos;s Create Flashcards!
+          </Typography>
           <Paper sx={{ mt: 4, p: 4, width: "100%" }}>
             <TextField
               value={text}
@@ -156,7 +170,7 @@ export default function Generate() {
             />
             <Button
               variant="contained"
-              sx={{backgroundColor: '#ff4437', color: '#ffffff'}}
+              sx={{ backgroundColor: "#ff4437", color: "#ffffff" }}
               onClick={handleSubmit}
               fullWidth
             >
@@ -167,8 +181,10 @@ export default function Generate() {
 
         {flashcards.length > 0 && (
           <Box sx={{ mt: 4 }}>
-            <Typography variant="h5" sx={{ color: 'white'}}>Flashcards Preview</Typography>
-            <Grid container spacing={3} sx={{ mt: 1}}>
+            <Typography variant="h5" sx={{ color: "white" }}>
+              Flashcards Preview
+            </Typography>
+            <Grid container spacing={3} sx={{ mt: 1 }}>
               {flashcards.map((flashcard, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
                   <Card>
@@ -228,7 +244,11 @@ export default function Generate() {
               ))}
             </Grid>
             <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
-              <Button variant="contained" sx={{backgroundColor: '#ffc107', color: '#ffffff'}} onClick={handleOpen}>
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: "#ffc107", color: "#ffffff" }}
+                onClick={handleOpen}
+              >
                 Save
               </Button>
             </Box>
