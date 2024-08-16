@@ -36,10 +36,10 @@ yarn-error.log*
 next-env.d.ts
 
 # firebase configuration
-firebase.js
+# firebase.js
 
 # auth middleware
 middleware.ts
 
 # get stripe
-get-stripe.js
+# get-stripe.js
